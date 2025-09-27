@@ -1,0 +1,456 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "C:\\Users\\bajor\\Linked-Dao\\contracts\\OnchainTrustNetwork.sol": {
+      "lastModificationDate": 1758939117095,
+      "contentHash": "b110aa168fe4a7b01143c9e92053a357",
+      "sourceName": "contracts/OnchainTrustNetwork.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@selfxyz/contracts/contracts/abstract/SelfVerificationRoot.sol"
+      ],
+      "versionPragmas": [
+        "0.8.28"
+      ],
+      "artifacts": [
+        "OnchainTrustNetwork"
+      ]
+    },
+    "C:\\Users\\bajor\\Linked-Dao\\node_modules\\@selfxyz\\contracts\\contracts\\abstract\\SelfVerificationRoot.sol": {
+      "lastModificationDate": 1758911414748,
+      "contentHash": "85c4bc5a05775ecbad75f5b2f6464803",
+      "sourceName": "@selfxyz/contracts/contracts/abstract/SelfVerificationRoot.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IPoseidonT3.sol",
+        "../interfaces/IIdentityVerificationHubV2.sol",
+        "../interfaces/ISelfVerificationRoot.sol",
+        "../constants/CircuitConstantsV2.sol",
+        "../constants/AttestationId.sol",
+        "../libraries/SelfUtils.sol",
+        "../libraries/Formatter.sol"
+      ],
+      "versionPragmas": [
+        "0.8.28"
+      ],
+      "artifacts": [
+        "SelfVerificationRoot"
+      ]
+    },
+    "C:\\Users\\bajor\\Linked-Dao\\node_modules\\@selfxyz\\contracts\\contracts\\interfaces\\IIdentityVerificationHubV2.sol": {
+      "lastModificationDate": 1758911414818,
+      "contentHash": "5d5d2b7ffd212f22bb33b0754757f696",
+      "sourceName": "@selfxyz/contracts/contracts/interfaces/IIdentityVerificationHubV2.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IRegisterCircuitVerifier.sol",
+        "./IDscCircuitVerifier.sol",
+        "../libraries/SelfStructs.sol"
+      ],
+      "versionPragmas": [
+        "0.8.28"
+      ],
+      "artifacts": [
+        "IIdentityVerificationHubV2"
+      ]
+    },
+    "C:\\Users\\bajor\\Linked-Dao\\node_modules\\@selfxyz\\contracts\\contracts\\constants\\CircuitConstantsV2.sol": {
+      "lastModificationDate": 1758911414770,
+      "contentHash": "d5d6bfe0a6b8622066003e68540537ea",
+      "sourceName": "@selfxyz/contracts/contracts/constants/CircuitConstantsV2.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./AttestationId.sol"
+      ],
+      "versionPragmas": [
+        "0.8.28"
+      ],
+      "artifacts": [
+        "CircuitConstantsV2"
+      ]
+    },
+    "C:\\Users\\bajor\\Linked-Dao\\node_modules\\@selfxyz\\contracts\\contracts\\interfaces\\ISelfVerificationRoot.sol": {
+      "lastModificationDate": 1758911414834,
+      "contentHash": "29a0c9ef03e4325949ae756b0f78a592",
+      "sourceName": "@selfxyz/contracts/contracts/interfaces/ISelfVerificationRoot.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.28"
+      ],
+      "artifacts": [
+        "ISelfVerificationRoot"
+      ]
+    },
+    "C:\\Users\\bajor\\Linked-Dao\\node_modules\\@selfxyz\\contracts\\contracts\\libraries\\Formatter.sol": {
+      "lastModificationDate": 1758911414866,
+      "contentHash": "3b08565232c3dbf2be8975732a7f75a8",
+      "sourceName": "@selfxyz/contracts/contracts/libraries/Formatter.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.28"
+      ],
+      "artifacts": [
+        "Formatter"
+      ]
+    },
+    "C:\\Users\\bajor\\Linked-Dao\\node_modules\\@selfxyz\\contracts\\contracts\\interfaces\\IPoseidonT3.sol": {
+      "lastModificationDate": 1758911414818,
+      "contentHash": "7300f6d808a59705ed02a7c0516c7804",
+      "sourceName": "@selfxyz/contracts/contracts/interfaces/IPoseidonT3.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.28"
+      ],
+      "artifacts": [
+        "IPoseidonT3"
+      ]
+    },
+    "C:\\Users\\bajor\\Linked-Dao\\node_modules\\@selfxyz\\contracts\\contracts\\libraries\\SelfUtils.sol": {
+      "lastModificationDate": 1758911414881,
+      "contentHash": "03e585dad9b5f8c383856148eea3b99b",
+      "sourceName": "@selfxyz/contracts/contracts/libraries/SelfUtils.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./SelfStructs.sol"
+      ],
+      "versionPragmas": [
+        "0.8.28"
+      ],
+      "artifacts": [
+        "SelfUtils"
+      ]
+    },
+    "C:\\Users\\bajor\\Linked-Dao\\node_modules\\@selfxyz\\contracts\\contracts\\constants\\AttestationId.sol": {
+      "lastModificationDate": 1758911414770,
+      "contentHash": "2cabeb5125bbeb088babc98c73351cd8",
+      "sourceName": "@selfxyz/contracts/contracts/constants/AttestationId.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.28"
+      ],
+      "artifacts": [
+        "AttestationId"
+      ]
+    },
+    "C:\\Users\\bajor\\Linked-Dao\\node_modules\\@selfxyz\\contracts\\contracts\\interfaces\\IDscCircuitVerifier.sol": {
+      "lastModificationDate": 1758911414802,
+      "contentHash": "3fe7a57446f8e0f637dce34acd0c1fcb",
+      "sourceName": "@selfxyz/contracts/contracts/interfaces/IDscCircuitVerifier.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.28"
+      ],
+      "artifacts": [
+        "IDscCircuitVerifier"
+      ]
+    },
+    "C:\\Users\\bajor\\Linked-Dao\\node_modules\\@selfxyz\\contracts\\contracts\\libraries\\SelfStructs.sol": {
+      "lastModificationDate": 1758911414866,
+      "contentHash": "a3b58161e1bc28219ed09ac5f6891ae7",
+      "sourceName": "@selfxyz/contracts/contracts/libraries/SelfStructs.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.28"
+      ],
+      "artifacts": [
+        "SelfStructs"
+      ]
+    },
+    "C:\\Users\\bajor\\Linked-Dao\\node_modules\\@selfxyz\\contracts\\contracts\\interfaces\\IRegisterCircuitVerifier.sol": {
+      "lastModificationDate": 1758911414834,
+      "contentHash": "63790957974b05ae3ca3511a6448adff",
+      "sourceName": "@selfxyz/contracts/contracts/interfaces/IRegisterCircuitVerifier.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.28"
+      ],
+      "artifacts": [
+        "IAadhaarRegisterCircuitVerifier",
+        "IRegisterCircuitVerifier"
+      ]
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "linked-dao-contracts",
+  "version": "1.0.0",
+  "description": "Blockchain talent matching platform with Self Protocol integration",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy": "hardhat run scripts/deploy.js",
+    "node": "hardhat node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krishnavbajoria02/Linked-Dao.git"
+  },
+  "keywords": [
+    "blockchain",
+    "talent",
+    "verification",
+    "dao"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krishnavbajoria02/Linked-Dao/issues"
+  },
+  "homepage": "https://github.com/krishnavbajoria02/Linked-Dao#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.1.0",
+    "hardhat": "^2.26.3"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.4.0",
+    "@selfxyz/contracts": "^1.2.3",
+    "dotenv": "^17.2.2",
+    "ethers": "^6.15.0"
+  }
+}
