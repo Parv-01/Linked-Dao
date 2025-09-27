@@ -1,0 +1,35 @@
+{
+  "name": "onchain-trust-subgraph",
+  "version": "0.1.0",
+  "description": "Hypergraph subgraph for OnchainTrustNetwork smart contract",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ onchain-trust",
+    "create-local": "graph create --node http://localhost:8020/ onchain-trust",
+    "remove-local": "graph remove --node http://localhost:8020/ onchain-trust",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 onchain-trust",
+    "hg:init": "npx hg init",
+    "hg:dev": "npx hg dev",
+    "hg:build": "npx hg build",
+    "hg:deploy": "npx hg deploy",
+    "hg:typesync": "npx hg typesync --open",
+    "syncdev": "hypergraph syncdev"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.51.0",
+    "@graphprotocol/graph-ts": "0.29.1",
+    "@types/node": "^24.5.2",
+    "axios": "^1.12.2",
+    "dotenv": "^17.2.2",
+    "ethers": "^6.15.0",
+    "graphql": "^16.11.0",
+    "graphql-request": "^7.2.0"
+  },
+  "devDependencies": {
+    "hypergraph": "latest",
+    "typescript": "^5.0.0"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "contractAddress": "0xabE83DaDFcaBA9137Ce8E75a294b9F946A073565",
+  "deploymentBlock": "5658157",
+  "deploymentTxHash": "0xb7fb70fcecb9b1fe6ded675ad9ab6af79c130889c4b72d3686b663106f2e7269",
+  "network": {
+    "chainId": "11142220",
+    "name": "celo-sepolia"
+  },
+  "timestamp": "2025-09-27T03:02:30.490Z",
+  "deployer": "0xbE9E6E40Fa81aE1B60134B143761D9E67eB44df0",
+  "selfHub": "0x0000000000000000000000000000000000000001",
+  "scopeSeed": "linked-dao-production",
+  "gasUsed": "1348522"
+}

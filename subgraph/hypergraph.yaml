@@ -1,0 +1,53 @@
+# Hypergraph Configuration for OnchainTrustNetwork
+
+space-id: onchain-trust-network
+name: "OnchainTrustNetwork Knowledge Graph"
+description: "A knowledge graph for tracking trust relationships, skill ratings, and hiring outcomes in a decentralized network"
+
+# Network configuration
+network: celo-alfajores
+contract-address: "0xabE83DaDFcaBA9137Ce8E75a294b9F946A073565"
+start-block: 5658157
+
+# Entities configuration
+entities:
+  User:
+    description: "Users in the trust network with verification and reviewer status"
+    properties:
+      - verified (boolean): Self Protocol verification status
+      - isReviewer (boolean): Whether user can rate others
+    
+  Skill:
+    description: "Skills that can be rated in the network"
+    properties:
+      - averageRating (number): Average skill rating across all reviews
+      - totalRatings (number): Total number of ratings received
+    
+  Job:
+    description: "Job opportunities in the network"
+    properties:
+      - totalCreditsSpent (number): Total credits invested in this job
+      - totalSponsorships (number): Number of sponsorship relationships
+
+# Relations configuration
+relations:
+  Rating:
+    description: "Skill rating between reviewer and user"
+    connects: [User, User, Skill]
+    properties:
+      - overallRating (1-10): Numerical rating value
+      - timestamp: When the rating was given
+      
+  Sponsorship:
+    description: "Credit sponsorship for job applications"
+    connects: [User, User, Job]
+    properties:
+      - creditsUsed: Amount of credits invested
+      - timestamp: When the sponsorship occurred
+      
+  HiringOutcome:
+    description: "Final hiring decision outcome"
+    connects: [User]
+    properties:
+      - isHired: Whether the candidate was hired
+      - timestamp: Decision timestamp

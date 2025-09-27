@@ -1,0 +1,68 @@
+# OnchainTrustNetwork Schema
+# Maps smart contract events to knowledge graph entities
+
+type User @entity {
+  id: ID!                    # Ethereum address
+  verified: Boolean!         # Self Protocol verification status
+  isReviewer: Boolean!       # Whether user is an approved reviewer
+  ratingsGiven: [Rating!]!   @derivedFrom(field: "reviewer")
+  ratingsReceived: [Rating!]! @derivedFrom(field: "user")
+  sponsorshipsReceived: [Sponsorship!]! @derivedFrom(field: "candidate")
+  sponsorshipsGiven: [Sponsorship!]! @derivedFrom(field: "sponsor")
+  hiringOutcomes: [HiringOutcome!]! @derivedFrom(field: "candidate")
+}
+
+type Reviewer @entity {
+  id: ID!                    # Ethereum address
+  user: User!                # Reference to user entity
+  approvedAt: BigInt!        # Timestamp when approved
+}
+
+type Rating @entity {
+  id: ID!                    # Transaction hash + log index
+  user: User!                # The user being rated
+  reviewer: User!            # The reviewer giving the rating
+  skill: Skill!              # Reference to skill entity
+  skillHash: Bytes!          # Hash of the skill being rated
+  overallRating: Int!        # Rating value (1-10)
+  timestamp: BigInt!         # Block timestamp
+  transactionHash: Bytes!    # Transaction hash
+  blockNumber: BigInt!       # Block number
+}
+
+type Sponsorship @entity {
+  id: ID!                    # Transaction hash + log index
+  sponsor: User!             # The sponsor spending credits
+  candidate: User!           # The candidate being sponsored
+  job: Job!                  # Reference to job entity
+  jobIdHash: Bytes!          # Hash of the job ID
+  creditsUsed: BigInt!       # Amount of credits spent
+  timestamp: BigInt!         # Block timestamp
+  transactionHash: Bytes!    # Transaction hash
+  blockNumber: BigInt!       # Block number
+}
+
+type HiringOutcome @entity {
+  id: ID!                    # Transaction hash + log index
+  candidate: User!           # The candidate
+  isHired: Boolean!          # Whether the candidate was hired
+  timestamp: BigInt!         # Block timestamp
+  transactionHash: Bytes!    # Transaction hash
+  blockNumber: BigInt!       # Block number
+}
+
+type Skill @entity {
+  id: ID!                    # Skill hash
+  hash: Bytes!               # The skill hash
+  ratings: [Rating!]!        @derivedFrom(field: "skill")
+  averageRating: BigDecimal! # Calculated average rating
+  totalRatings: Int!         # Total number of ratings
+}
+
+type Job @entity {
+  id: ID!                    # Job ID hash
+  hash: Bytes!               # The job ID hash
+  sponsorships: [Sponsorship!]! @derivedFrom(field: "job")
+  totalCreditsSpent: BigInt! # Total credits spent on this job
+  totalSponsorships: Int!    # Total number of sponsorships
+}
