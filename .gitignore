@@ -38,3 +38,6 @@ next-env.d.ts
 artifacts
 cache
 
+INTEGRATION_GUIDE.md
+WORKING_DEMO_PROOF.md
+event_bridge/.env.example

@@ -1,0 +1,37 @@
+{
+  "name": "onchain-trust-bridge",
+  "version": "1.0.0",
+  "description": "Bridge service that listens to OnchainTrustNetwork events and updates Hypergraph knowledge graph",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "test-bridge": "tsx src/test.ts",
+    "grc20-demo": "tsx src/grc20-demo.ts",
+    "test": "jest",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "viem": "^2.37.8",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.2",
+    "@graphprotocol/grc-20": "^0.25.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.17.0",
+    "typescript": "^5.5.4",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.12"
+  },
+  "keywords": [
+    "blockchain",
+    "hypergraph",
+    "trust-network",
+    "event-listener",
+    "knowledge-graph"
+  ],
+  "author": "LinkedDAO",
+  "license": "MIT"
+}
