@@ -1,87 +1,76 @@
-"use client"
-import { ConnectButton } from "@rainbow-me/rainbowkit";
-//import Image from 'next/image';
+"use client";
+
 import { useState } from 'react';
+import Link from 'next/link';
 
-export default function Navbar ()  {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    
-      return (
-         <header className="w-full">
-              <nav className="w-full bg-white backdrop-blur fixed top-0 left-0 right-0 z-50 shadow-lg">
-                <div className="max-w-7xl mx-auto h-20 px-6 flex items-center justify-between">
-                  <div className="flex items-center">
-                    <button className="bg-white rounded-md p-0 cursor-pointer" aria-label="Go to home">
-                      {/*<Image src="/logo.img" alt="Linked-Dao" className="h-20 object-contain" />*/}
-                    </button>
-                  </div>
-        
-                  {/* Desktop Nav */}
-                  <div className="hidden font-orbitron md:flex items-center space-x-8 lg:space-x-10 text-gray-800 text-sm lg:text-base">
-                    <button className={`hover:text-blue-600 transition-colors hover:underline underline-offset-8 decoration-2`}>Profile</button>
-                    <button className={`hover:text-blue-600 transition-colors hover:underline underline-offset-8 decoration-2`}>Listing</button>
-                    <button className={`hover:text-blue-600 transition-colors hover:underline underline-offset-8 decoration-2`}>Reviews</button>
-                    <button className={`hover:text-blue-600 transition-colors hover:underline underline-offset-8 decoration-2`}>Jobs</button>
-                  </div>
-        
-                  {/* Desktop CTA */}
-                  <div className="hidden md:flex items-center">
-                    <button 
-                      className="cursor-pointer"
-                    >
-                       <ConnectButton />
-                    </button>
-                  </div>
-        
-                  {/* Mobile Hamburger */}
-                  <div className="md:hidden flex items-center">
-                    <button
-                      type="button"
-                      className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                      aria-controls="mobile-menu"
-                      aria-expanded={isMobileMenuOpen}
-                      onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    >
-                      <span className="sr-only">Open main menu</span>
-                      {isMobileMenuOpen ? (
-                        // X icon
-                        <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                      ) : (
-                        // Hamburger icon
-                        <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
-                        </svg>
-                      )}
-                    </button>
-                  </div>
-                </div>
-        
-                {/* Mobile Menu Panel */}
-                <div
-                  id="mobile-menu"
-                  className={`${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} md:hidden overflow-hidden transition-all duration-300 ease-out bg-white shadow-lg`}
-                >
-                  <div className="px-6 pt-2 pb-6 space-y-1 text-gray-800">
-                    <button className={`block w-full text-left px-3 py-2 rounded-md hover:bg-gray-100`}>Profile</button>
-                    <button className={`block w-full text-left px-3 py-2 rounded-md hover:bg-gray-100`}>Listing</button>
-                    <button className={`block w-full text-left px-3 py-2 rounded-md hover:bg-gray-100`}>Reviews</button>
-                    <button className={`block w-full text-left px-3 py-2 rounded-md hover:bg-gray-100`}>Jobs</button>
-                    <div className="pt-2">
-                      <button 
-    
-                        className="w-full"
-                      >
-                        <ConnectButton />
-                      </button>
+// Define the navigation links
+const navLinks = [
+    { href: "/profile", label: "Profile" },
+    { href: "/listings", label: "Listings" },
+    { href: "/jobs", label: "Jobs" },
+    { href: "/reviews", label: "Reviews" },
+];
+
+export default function Navbar() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    return (
+        <>
+            <header className="fixed top-4 left-0 right-0 z-50 px-4">
+                <nav className="relative flex items-center justify-center max-w-5xl mx-auto rounded-full bg-black/40 p-3 text-white backdrop-blur-xl border border-white/10 shadow-2xl">
+                    
+                    {/* Centered Logo and Desktop Navigation Links */}
+                    <div className="hidden md:flex items-center gap-10">
+                        <Link href="/" className="flex left gap-10" onClick={() => setIsMenuOpen(false)}>
+                            <span className="font-bold text-xl tracking-wider select-none">Linked-Dao</span>
+                        </Link>
+                        <div className="flex items-center gap-8 text-base">
+                            {navLinks.map((link) => (
+                                 <Link key={link.href} href={link.href} className="opacity-80 hover:opacity-30 transition-opacity">
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </div>
                     </div>
-                  </div>
+
+                    {/* Logo for Mobile View (Centered) */}
+                     <Link href="/" className="md:hidden flex items-center gap-3">
+                        <span className="font-bold text-xl tracking-wider select-none">Linked-Dao</span>
+                    </Link>
+
+
+                    {/* Mobile Menu Button */}
+                    <div className="md:hidden absolute right-4 top-1/2 -translate-y-1/2">
+                        <button onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                {isMenuOpen ? (
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                ) : (
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+                                )}
+                            </svg>
+                        </button>
+                    </div>
+                </nav>
+            </header>
+
+            {/* Mobile Menu Panel */}
+            {isMenuOpen && (
+                <div className="md:hidden fixed top-[80px] left-4 right-4 z-40 rounded-xl bg-black/50 backdrop-blur-lg border border-white/10 shadow-lg">
+                    <div className="flex flex-col items-center space-y-4 p-6">
+                        {navLinks.map((link) => (
+                             <Link
+                                key={link.href}
+                                href={link.href}
+                                className="w-full text-center text-white py-2 rounded-md hover:bg-white/10 transition-colors text-lg"
+                                onClick={() => setIsMenuOpen(false)} // Close menu on click
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                    </div>
                 </div>
-              </nav>
-              </header>
-
+            )}
+        </>
     );
-  
 }
-
