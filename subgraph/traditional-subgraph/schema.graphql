@@ -1,0 +1,84 @@
+type User @entity {
+  id: ID! # Ethereum address
+  address: Bytes!
+  verified: Boolean!
+  isReviewer: Boolean!
+  approvedAt: BigInt
+  totalRatingsGiven: BigInt!
+  totalRatingsReceived: BigInt!
+  averageRating: BigDecimal!
+  totalCreditsSpent: BigInt!
+  joinedAt: BigInt!
+  lastActivity: BigInt!
+
+  # Relationships
+  ratingsGiven: [Rating!]! @derivedFrom(field: "reviewer")
+  ratingsReceived: [Rating!]! @derivedFrom(field: "ratee")
+  sponsorships: [Sponsorship!]! @derivedFrom(field: "sponsor")
+  hiringOutcomes: [HiringOutcome!]! @derivedFrom(field: "candidate")
+}
+
+type Reviewer @entity {
+  id: ID! # Same as user address
+  user: User!
+  approvedAt: BigInt!
+  transactionHash: Bytes!
+  blockNumber: BigInt!
+
+  # Relationships
+  ratingsGiven: [Rating!]! @derivedFrom(field: "reviewer")
+}
+
+type Rating @entity {
+  id: ID! # txHash + logIndex
+  reviewer: User!
+  ratee: User!
+  skill: Skill!
+  overallRating: Int! # 1-10
+  timestamp: BigInt!
+  transactionHash: Bytes!
+  blockNumber: BigInt!
+}
+
+type Skill @entity {
+  id: ID! # Hash of the skill
+  hash: Bytes!
+  name: String # Derived from events if available
+  totalRatings: BigInt!
+  averageRating: BigDecimal!
+  createdAt: BigInt!
+
+  # Relationships
+  ratings: [Rating!]! @derivedFrom(field: "skill")
+}
+
+type Job @entity {
+  id: ID! # Hash of the job ID
+  hash: Bytes!
+  totalCreditsSpent: BigInt!
+  totalSponsorships: BigInt!
+  createdAt: BigInt!
+
+  # Relationships
+  sponsorships: [Sponsorship!]! @derivedFrom(field: "job")
+}
+
+type Sponsorship @entity {
+  id: ID! # txHash + logIndex
+  sponsor: User!
+  candidate: User!
+  job: Job!
+  creditsUsed: BigInt!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+  blockNumber: BigInt!
+}
+
+type HiringOutcome @entity {
+  id: ID! # txHash + logIndex
+  candidate: User!
+  isHired: Boolean!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+  blockNumber: BigInt!
+}
