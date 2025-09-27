@@ -1,7 +1,6 @@
-import type { Metadata } from "next";
+import BottomNavigation from "@/components/BottomNavigation";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 import { Providers } from "./wallet/providers";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -25,10 +24,10 @@ export default function RootLayout({
         <div className="fixed inset-0 z-[-1] bg-black/60" />
 
         <Providers>
-          <Navbar />
-          <main className="relative z-10 pt-24 min-h-screen">
+          <main className="relative z-10 min-h-screen pb-16 flex flex-col items-center justify-start">
             {children}
           </main>
+          <BottomNavigation />
         </Providers>
       </body>
     </html>

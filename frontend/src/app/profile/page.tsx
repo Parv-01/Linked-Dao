@@ -2,8 +2,8 @@ import Profile from './profile'; // Import the component from the sibling file
 
 export default function ProfilePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center">
+    <section className="w-full max-w-md mx-auto flex flex-col items-center justify-start pt-8 px-4">
       <Profile />
-    </main>
+    </section>
   );
 }
