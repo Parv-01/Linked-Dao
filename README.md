@@ -117,3 +117,44 @@ Linked-Dao/
 ├── database/           # Off-chain DB models
 ├── README.md           # Project documentation
 
+🚀 Getting Started
+Prerequisites
+
+Node.js & pnpm
+
+Hardhat
+
+The Graph CLI
+
+PostgreSQL / MongoDB
+
+Setup
+# Clone repo
+git clone https://github.com/Parv-01/Linked-Dao.git
+
+# Install dependencies
+cd Linked-Dao
+pnpm install
+
+# Compile contracts
+npx hardhat compile
+
+# Run local blockchain
+npx hardhat node
+
+# Deploy contracts
+npx hardhat run scripts/deploy.js --network localhost
+
+🏆 ETHGlobal Hackathon
+
+This project was built as part of ETHGlobal Hackathon to solve real-world problems in hiring and reputation management through Web3 + DAO governance.
+
+🤝 Contributors
+
+Parv
+
+Khushi
+
+📜 License
+
+MIT License © 2025 LinkedDAO Team
