@@ -1,0 +1,36 @@
+specVersion: 0.0.5
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: OnchainTrustNetwork
+    network: celo-alfajores
+    source:
+      address: "0xabE83DaDFcaBA9137Ce8E75a294b9F946A073565"
+      abi: OnchainTrustNetwork
+      startBlock: 5658157
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: OnchainTrustNetwork\OnchainTrustNetwork.wasm
+      entities:
+        - User
+        - Reviewer
+        - Rating
+        - Sponsorship
+        - HiringOutcome
+        - Skill
+        - Job
+      abis:
+        - name: OnchainTrustNetwork
+          file: OnchainTrustNetwork\abis\OnchainTrustNetwork.json
+      eventHandlers:
+        - event: ReviewerApproved(indexed address,uint256)
+          handler: handleReviewerApproved
+        - event: SkillRated(indexed address,indexed address,indexed bytes32,uint8)
+          handler: handleSkillRated
+        - event: CreditsSpent(indexed address,indexed address,indexed bytes32,uint256)
+          handler: handleCreditsSpent
+        - event: HiringOutcome(indexed address,bool,uint256)
+          handler: handleHiringOutcome

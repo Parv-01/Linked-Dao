@@ -12,14 +12,23 @@ async function main() {
   const selfHub = process.env.SELF_HUB_ADDRESS || "0x0000000000000000000000000000000000000001"; // Replace with actual Self hub address
   const scopeSeed = process.env.SELF_SCOPE_SEED || "linked-dao-production"; // Replace with your actual scope seed
 
+  // Self Protocol verification config (18+ years old, no country restrictions, OFAC disabled)
+  const verificationConfig = {
+    olderThan: 18,
+    forbiddenCountries: [], // No country restrictions for now
+    ofacEnabled: false // Disable OFAC checks for testnet
+  };
+
   console.log("\n=== Deploying OnchainTrustNetwork ===");
+  console.log("Self Verification Config:", verificationConfig);
 
   // Deploy OnchainTrustNetwork contract
   const OnchainTrustNetwork = await ethers.getContractFactory("OnchainTrustNetwork");
   const onchainTrustNetwork = await OnchainTrustNetwork.deploy(
     initialDAOAdmin,
     selfHub,
-    scopeSeed
+    scopeSeed,
+    verificationConfig
   );
 
   await onchainTrustNetwork.waitForDeployment();
@@ -37,7 +46,7 @@ async function main() {
   console.log("Deployment block number:", receipt.blockNumber.toString());
   console.log("Gas used:", receipt.gasUsed.toString());
 
-  // Create deployment info for Hypergraph config
+  // Create deployment info
   const network = await deployer.provider.getNetwork();
   const deploymentInfo = {
     contractAddress: contractAddress,
@@ -58,46 +67,14 @@ async function main() {
   fs.writeFileSync("deployment-info.json", JSON.stringify(deploymentInfo, null, 2));
   console.log("\n✅ Deployment info written to deployment-info.json");
 
-  // Generate Hypergraph config update instructions
-  console.log("\n=== HYPERGRAPH CONFIGURATION ===");
-  console.log("Update your hypergraph/hypergraph.config.js with:");
-  console.log(`- Contract address: ${contractAddress}`);
-  console.log(`- Start block: ${receipt.blockNumber}`);
-  console.log(`- Chain ID: ${(await deployer.provider.getNetwork()).chainId}`);
-
+  console.log("\n=== DEPLOYMENT COMPLETE ===");
+  console.log("Contract is ready for Self Protocol verification!");
+  console.log("Events will be stored off-chain in your Hypergraph knowledge graph.");
   console.log("\n=== NEXT STEPS ===");
-  console.log("1. Copy the contract ABI to hypergraph directory:");
-  console.log(`   Copy-Item "artifacts/contracts/OnchainTrustNetwork.sol/OnchainTrustNetwork.json" "hypergraph/abis/"`);
-  console.log("");
-  console.log("2. Update hypergraph/hypergraph.config.js:");
-  console.log(`   - address: "${contractAddress}"`);
-  console.log(`   - startBlock: ${receipt.blockNumber}`);
-  console.log("");
-  console.log("3. Start Hypergraph indexing:");
-  console.log("   cd hypergraph");
-  console.log("   npm install");
-  console.log("   npm run dev");
-  console.log("");
-  console.log("4. Access Hypergraph UI at: http://localhost:5173");
-
-  // Automatically update hypergraph config if file exists
-  const hypergraphConfigPath = "./hypergraph/hypergraph.config.js";
-  if (fs.existsSync(hypergraphConfigPath)) {
-    console.log("\n⚡ Auto-updating hypergraph config...");
-
-    let configContent = fs.readFileSync(hypergraphConfigPath, 'utf8');
-    configContent = configContent.replace(
-      /address: "[^"]*"/,
-      `address: "${contractAddress}"`
-    );
-    configContent = configContent.replace(
-      /startBlock: \d+/,
-      `startBlock: ${receipt.blockNumber.toString()}`
-    );
-
-    fs.writeFileSync(hypergraphConfigPath, configContent);
-    console.log("✅ Hypergraph config updated automatically!");
-  }
+  console.log("1. Update your off-chain Hypergraph with contract address:", contractAddress);
+  console.log("2. Configure Self Protocol verification flow in your frontend");
+  console.log("3. Start monitoring contract events for trust network data");
+  console.log("4. Test the verification and rating functionality");
 }
 
 main()

@@ -8,6 +8,10 @@ pragma solidity 0.8.28;
 // ====================================================================
 
 import "@selfxyz/contracts/contracts/abstract/SelfVerificationRoot.sol";
+import "@selfxyz/contracts/contracts/interfaces/ISelfVerificationRoot.sol";
+import "@selfxyz/contracts/contracts/interfaces/IIdentityVerificationHubV2.sol";
+import "@selfxyz/contracts/contracts/libraries/SelfStructs.sol";
+import "@selfxyz/contracts/contracts/libraries/SelfUtils.sol";
 
 contract OnchainTrustNetwork is SelfVerificationRoot {
     // --- STATE VARIABLES ---
@@ -15,6 +19,10 @@ contract OnchainTrustNetwork is SelfVerificationRoot {
     mapping(address => bool) public isReviewer;
     mapping(address => bool) public verifiedUsers;
     address[] public ReviewerPool;
+
+    // --- SELF PROTOCOL VERIFICATION CONFIG ---
+    SelfStructs.VerificationConfigV2 public verificationConfig;
+    bytes32 public verificationConfigId;
 
     // --- MODIFIERS (Access Control + Self Verification) ---
 
@@ -62,13 +70,23 @@ contract OnchainTrustNetwork is SelfVerificationRoot {
 
     // --- CONSTRUCTOR ---
 
-    // _selfHub: Address of deployed SelfHub on your network (see dashboard/docs)
-    constructor(address _initialDAOAdmin, address _selfHub, string memory _scopeSeed)
+    // Constructor with Self Protocol configuration
+    constructor(
+        address _initialDAOAdmin,
+        address _selfHub,
+        string memory _scopeSeed,
+        SelfUtils.UnformattedVerificationConfigV2 memory _verificationConfig
+    )
         SelfVerificationRoot(_selfHub, _scopeSeed)
     {
         DAO_ADMIN = _initialDAOAdmin;
         isReviewer[DAO_ADMIN] = true;
         ReviewerPool.push(DAO_ADMIN);
+
+        // Set up Self Protocol verification config
+        verificationConfig = SelfUtils.formatVerificationConfigV2(_verificationConfig);
+        verificationConfigId = IIdentityVerificationHubV2(_selfHub).setVerificationConfigV2(verificationConfig);
+
         emit ReviewerApproved(DAO_ADMIN, block.timestamp);
     }
 
@@ -77,9 +95,8 @@ contract OnchainTrustNetwork is SelfVerificationRoot {
         bytes32 /* destinationChainId */,
         bytes32 /* userIdentifier */,
         bytes memory /* userDefinedData */
-    ) public pure override returns (bytes32) {
-        // Return a hardcoded config ID - replace with your actual config ID from Self dashboard
-        return bytes32(uint256(12345));
+    ) public view override returns (bytes32) {
+        return verificationConfigId;
     }
 
     // --- CORE FUNCTIONS ---
