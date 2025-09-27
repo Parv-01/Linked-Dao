@@ -9,7 +9,10 @@ async function main() {
 
   // Configuration for deployment
   const initialDAOAdmin = deployer.address; // Use deployer as initial admin
-  const selfHub = process.env.SELF_HUB_ADDRESS || "0x0000000000000000000000000000000000000001"; // Replace with actual Self hub address
+  if (!process.env.SELF_HUB_ADDRESS) {
+    throw new Error("SELF_HUB_ADDRESS environment variable must be set to a valid address.");
+  }
+  const selfHub = process.env.SELF_HUB_ADDRESS;
   const scopeSeed = process.env.SELF_SCOPE_SEED || "linked-dao-production"; // Replace with your actual scope seed
 
   // Self Protocol verification config (18+ years old, no country restrictions, OFAC disabled)
