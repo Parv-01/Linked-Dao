@@ -8,7 +8,7 @@ console.log('🧪 OnchainTrustNetwork Testing Reference\n');
 // Sample addresses for testing (use your own in Remix)
 const SAMPLE_ADDRESSES = {
   DAO_ADMIN: '0x5B38Da6a701c568545dCfcB03FcB875f56beddC4',  // Account 0 in Remix
-  ALICE: '0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2',     // Account 1 in Remix  
+  ALICE: '0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2',     // Account 1 in Remix
   BOB: '0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db',       // Account 2 in Remix
   CAROL: '0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB',     // Account 3 in Remix
   JUNIOR_DEV_1: '0x617F2E2fD72FD9D5503197092aC168c91465E7f2', // Junior Dev 1
@@ -46,7 +46,7 @@ console.log('\n💼 Jobs and Hashes:');
 console.log('═══════════════════════');
 const jobs = [
   'Frontend Developer Position',
-  'Smart Contract Developer Role', 
+  'Smart Contract Developer Role',
   'Full Stack Engineer Opening',
   'Blockchain Architect Role'
 ];
@@ -112,7 +112,7 @@ console.log('\n🔗 KNOWLEDGE GRAPH RESULTS:');
 console.log('═══════════════════════════════');
 console.log('📈 Entities Created:');
 console.log('   • 7 Users (1 DAO + 3 reviewers + 3 juniors)');
-console.log('   • 3+ Skills (JavaScript, Solidity, React)');  
+console.log('   • 3+ Skills (JavaScript, Solidity, React)');
 console.log('   • 2+ Jobs (Frontend Dev, Smart Contract Dev)');
 console.log('   • 3 Reviewers (Approved reviewer entities)');
 
@@ -125,7 +125,7 @@ console.log('\n💡 PRO TIPS:');
 console.log('═══════════════');
 console.log('• Switch accounts in Remix before calling functions');
 console.log('• Check transaction logs to verify events are emitted');
-console.log('• Save skill/job hashes from getHash() calls');  
+console.log('• Save skill/job hashes from getHash() calls');
 console.log('• Monitor gas usage for each transaction');
 console.log('• Use different rating values (1-10) for variety');
 

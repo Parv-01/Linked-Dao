@@ -28,7 +28,7 @@ _verificationConfig: {
 
 ## 🔄 Complete Testing Flow
 
-### **Phase 1: Setup & Initial State** 
+### **Phase 1: Setup & Initial State**
 
 #### Step 1: Deploy Contract ✅
 Deploy with constructor parameters above.
@@ -98,7 +98,7 @@ rateJunior(0x2222222222222222222222222222222222222222, 0x1234..., 9)  // JavaScr
 rateJunior(0x1111111111111111111111111111111111111111, 0x5678..., 7)  // Solidity: 7/10
 
 // Bob rates same developers:
-// Switch to Bob's account in Remix  
+// Switch to Bob's account in Remix
 rateJunior(0x1111111111111111111111111111111111111111, 0x1234..., 7)  // JavaScript: 7/10
 rateJunior(0x3333333333333333333333333333333333333333, 0x9abc..., 9)  // React: 9/10
 ```
@@ -127,7 +127,7 @@ getHash("Full Stack Engineer Opening")     // Returns: 0xjob3...
 // Carol sponsors candidates for jobs:
 // Switch to Carol's account in Remix
 sponsorApplication(0x1111111111111111111111111111111111111111, 0xjob1..., 50)   // 50 credits
-sponsorApplication(0x2222222222222222222222222222222222222222, 0xjob1..., 30)   // 30 credits  
+sponsorApplication(0x2222222222222222222222222222222222222222, 0xjob1..., 30)   // 30 credits
 sponsorApplication(0x3333333333333333333333333333333333333333, 0xjob2..., 75)   // 75 credits
 
 // Alice also sponsors:
@@ -174,7 +174,7 @@ verifiedUsers(REVIEWER_ADDRESS)      // Check if users are verified through Self
 ### Step 11: Monitor Events 📡
 In Remix, check the transaction logs to see emitted events:
 1. Go to terminal in Remix
-2. Click on transaction hashes  
+2. Click on transaction hashes
 3. View "Logs" section to see events
 4. Verify event parameters match your inputs
 
@@ -185,7 +185,7 @@ In Remix, check the transaction logs to see emitted events:
 After completing this flow, your subgraph should create:
 
 ### Entities (Nodes):
-- **4 Users** (DAO Admin + 3 reviewers)  
+- **4 Users** (DAO Admin + 3 reviewers)
 - **4 Skills** (JavaScript, Solidity, React, Python)
 - **3 Jobs** (Frontend Dev, Smart Contract Dev, Full Stack)
 - **4 Reviewers** (Approved reviewer entities)
@@ -201,7 +201,7 @@ After completing this flow, your subgraph should create:
 
 ### Common Issues:
 1. **"Admin only access"** → Make sure you're calling from DAO Admin account
-2. **"Reviewer status required"** → Switch to approved reviewer account  
+2. **"Reviewer status required"** → Switch to approved reviewer account
 3. **"Self Protocol verification required"** → For testing, this should auto-verify when rating/sponsoring
 4. **"Rating must be between 1 and 10"** → Use valid rating range
 

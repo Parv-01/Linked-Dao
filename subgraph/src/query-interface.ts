@@ -249,7 +249,7 @@ export class TrustNetworkQuerier {
     return await this.client.request(query, { spaceId: this.spaceId });
   }
 
-  // Advanced query: Network effect analysis  
+  // Advanced query: Network effect analysis
   async getNetworkEffectAnalysis(userAddress: string): Promise<any> {
     const query = `
       query GetNetworkEffectAnalysis($spaceId: String!, $userAddress: String!) {
@@ -269,12 +269,12 @@ export class TrustNetworkQuerier {
             timestamp
           }
         }
-        
+
         # Get sponsorships received
         sponsorships: relationships(
           spaceId: $spaceId,
           filter: {
-            type: "trust:sponsors", 
+            type: "trust:sponsors",
             to: "user:${userAddress}"
           }
         ) {
@@ -285,7 +285,7 @@ export class TrustNetworkQuerier {
             sponsorshipType
           }
         }
-        
+
         # Get hiring outcomes
         hiringOutcomes: entities(
           spaceId: $spaceId,
@@ -347,13 +347,13 @@ export class TrustNetworkAnalytics {
   // Calculate trust propagation through the network
   async calculateTrustPropagation(userAddress: string): Promise<number> {
     const networkData = await this.querier.getNetworkEffectAnalysis(userAddress);
-    
+
     // Implement trust propagation algorithm
     let trustScore = 0;
-    
+
     // Weight direct ratings
     if (networkData.directRatings) {
-      const avgRating = networkData.directRatings.reduce((sum: number, rating: any) => 
+      const avgRating = networkData.directRatings.reduce((sum: number, rating: any) =>
         sum + rating.properties.rating * rating.properties.confidence, 0
       ) / networkData.directRatings.length;
       trustScore += avgRating * 0.6; // 60% weight for direct ratings
@@ -361,7 +361,7 @@ export class TrustNetworkAnalytics {
 
     // Weight sponsorships
     if (networkData.sponsorships) {
-      const totalCredits = networkData.sponsorships.reduce((sum: number, sponsorship: any) => 
+      const totalCredits = networkData.sponsorships.reduce((sum: number, sponsorship: any) =>
         sum + sponsorship.properties.creditsSpent, 0
       );
       trustScore += Math.min(totalCredits / 1000, 4) * 0.3; // 30% weight for sponsorships
@@ -369,7 +369,7 @@ export class TrustNetworkAnalytics {
 
     // Weight hiring success
     if (networkData.hiringOutcomes) {
-      const successRate = networkData.hiringOutcomes.filter((outcome: any) => 
+      const successRate = networkData.hiringOutcomes.filter((outcome: any) =>
         outcome.properties.isHired
       ).length / networkData.hiringOutcomes.length;
       trustScore += successRate * 10 * 0.1; // 10% weight for hiring success
@@ -381,7 +381,7 @@ export class TrustNetworkAnalytics {
   // Identify skill clusters in the network
   async identifySkillClusters(): Promise<any[]> {
     const skillData = await this.querier.getSkillCompetencyMap();
-    
+
     // Group skills by category and analyze rating patterns
     const clusters = skillData.reduce((acc: any, skill: any) => {
       const category = skill.properties.category || 'uncategorized';
@@ -408,12 +408,12 @@ export class TrustNetworkAnalytics {
   // Predict hiring success based on ratings and sponsorships
   async predictHiringSuccess(userAddress: string): Promise<number> {
     const userData = await this.querier.getNetworkEffectAnalysis(userAddress);
-    
+
     let successProbability = 0.5; // Base probability
 
     // Factor in average ratings
     if (userData.directRatings && userData.directRatings.length > 0) {
-      const avgRating = userData.directRatings.reduce((sum: number, rating: any) => 
+      const avgRating = userData.directRatings.reduce((sum: number, rating: any) =>
         sum + rating.properties.rating, 0
       ) / userData.directRatings.length;
       successProbability += (avgRating - 5) * 0.1; // Each point above 5 adds 10%
@@ -427,7 +427,7 @@ export class TrustNetworkAnalytics {
 
     // Factor in historical success
     if (userData.hiringOutcomes && userData.hiringOutcomes.length > 0) {
-      const successRate = userData.hiringOutcomes.filter((outcome: any) => 
+      const successRate = userData.hiringOutcomes.filter((outcome: any) =>
         outcome.properties.isHired
       ).length / userData.hiringOutcomes.length;
       successProbability = successProbability * 0.7 + successRate * 0.3; // Weighted historical success

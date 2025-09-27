@@ -3,7 +3,7 @@
 ## 🎯 Overview
 Your OnchainTrustNetwork subgraph is ready to create a comprehensive knowledge graph that tracks:
 - **Trust relationships** between users
-- **Skill ratings** and competency networks  
+- **Skill ratings** and competency networks
 - **Job sponsorships** and hiring patterns
 - **Verification status** through Self Protocol
 
@@ -64,7 +64,7 @@ Skill {
 }
 
 Job {
-  id: Job hash  
+  id: Job hash
   totalCreditsSpent: Investment amount
   totalSponsorships: Number of sponsors
 }
@@ -125,7 +125,7 @@ query SponsorshipAnalysis {
 }
 ```
 
-### Trust Network Analysis  
+### Trust Network Analysis
 ```graphql
 query TrustNetwork {
   users(where: { isReviewer: true }) {
@@ -203,7 +203,7 @@ query TrustedJavaScriptExperts {
 
 ### Advanced Analytics Possible:
 - **Trust Propagation**: How trust flows through the network
-- **Skill Correlation**: Which skills are often rated together  
+- **Skill Correlation**: Which skills are often rated together
 - **Hiring Success Prediction**: Based on rating patterns
 - **Reviewer Reliability**: Consistency of ratings over time
 - **Network Effects**: How sponsorships influence hiring
@@ -215,7 +215,7 @@ query TrustedJavaScriptExperts {
 - Check if events are being emitted on the correct network
 - Verify subgraph is deployed and syncing
 
-### Build Errors  
+### Build Errors
 - Run `npm run codegen` to regenerate types
 - Check schema.graphql for syntax errors
 - Verify mapping.ts imports are correct
@@ -228,7 +228,7 @@ query TrustedJavaScriptExperts {
 ## 📈 Next Steps
 
 1. **Deploy** your subgraph to Hypergraph
-2. **Interact** with your contract to generate events  
+2. **Interact** with your contract to generate events
 3. **Query** your knowledge graph via GraphQL
 4. **Visualize** trust networks and skill relationships
 5. **Build** applications that leverage the knowledge graph

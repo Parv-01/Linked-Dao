@@ -19,7 +19,7 @@ async function testContractEvents() {
 
     // Create provider
     const provider = new ethers.JsonRpcProvider(CELO_SEPOLIA_RPC);
-    
+
     // Create contract interface
     const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider);
 
@@ -30,7 +30,7 @@ async function testContractEvents() {
     // Get latest block for context
     const latestBlock = await provider.getBlockNumber();
     console.log('📊 Latest Block:', latestBlock);
-    
+
     console.log('\n🔎 Querying past events...\n');
 
     // Query recent events from the contract
@@ -83,7 +83,7 @@ async function testContractEvents() {
       });
 
       console.log('\n✅ Contract event listening test completed successfully!');
-      
+
       if (reviewerEvents.length > 0 || ratingEvents.length > 0 || sponsorEvents.length > 0 || hiringEvents.length > 0) {
         console.log('\n🎉 Events detected! Your subgraph should be able to process these events and create knowledge graph nodes.');
       } else {
@@ -106,7 +106,7 @@ async function testContractEvents() {
 // GraphQL query examples for testing the subgraph
 function printGraphQLQueries() {
   console.log('\n📋 GraphQL Queries for testing your Hypergraph subgraph:\n');
-  
+
   console.log('1️⃣ Get all users with their reviewer status:');
   console.log(`
 query GetUsers {

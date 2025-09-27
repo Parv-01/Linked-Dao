@@ -16,13 +16,13 @@ entities:
     properties:
       - verified (boolean): Self Protocol verification status
       - isReviewer (boolean): Whether user can rate others
-    
+
   Skill:
     description: "Skills that can be rated in the network"
     properties:
       - averageRating (number): Average skill rating across all reviews
       - totalRatings (number): Total number of ratings received
-    
+
   Job:
     description: "Job opportunities in the network"
     properties:
@@ -37,14 +37,14 @@ relations:
     properties:
       - overallRating (1-10): Numerical rating value
       - timestamp: When the rating was given
-      
+
   Sponsorship:
     description: "Credit sponsorship for job applications"
     connects: [User, User, Job]
     properties:
       - creditsUsed: Amount of credits invested
       - timestamp: When the sponsorship occurred
-      
+
   HiringOutcome:
     description: "Final hiring decision outcome"
     connects: [User]

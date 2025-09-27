@@ -1,8 +1,8 @@
 import { ethers } from 'ethers';
-import TrustNetworkPublisher, { 
-  TrustNetworkEntity, 
-  ENTITY_TYPES, 
-  RELATIONSHIP_TYPES 
+import TrustNetworkPublisher, {
+  TrustNetworkEntity,
+  ENTITY_TYPES,
+  RELATIONSHIP_TYPES
 } from './grc20-schema.js';
 
 // Publisher for converting OnchainTrustNetwork events to GRC-20 format
@@ -20,7 +20,7 @@ export class OnchainTrustPublisher {
   ) {
     this.publisher = new TrustNetworkPublisher(graphEndpoint, spaceId, authToken);
     this.provider = new ethers.JsonRpcProvider(rpcUrl);
-    
+
     // Contract ABI for event listening
     const contractABI = [
       "event ReviewerApproved(address indexed reviewer, uint256 timestamp)",
@@ -322,7 +322,7 @@ export class OnchainTrustPublisher {
       await this.handleReviewerApproved(event);
     });
 
-    // Listen for SkillRated events  
+    // Listen for SkillRated events
     this.contract.on('SkillRated', async (reviewer, junior, skillHash, rating, event) => {
       console.log('⭐ SkillRated:', junior, 'rated', rating, 'for skill', skillHash);
       await this.handleSkillRated(event);

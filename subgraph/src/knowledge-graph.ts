@@ -9,12 +9,12 @@ const CONFIG = {
   // The Graph endpoints (replace with actual endpoints when available)
   GRAPH_ENDPOINT: process.env.GRAPH_ENDPOINT || 'https://api.thegraph.com/public-data',
   HYPERGRAPH_ENDPOINT: process.env.HYPERGRAPH_ENDPOINT || 'https://hypergraph.thegraph.com/graphql',
-  
+
   // Contract configuration
   RPC_URL: 'https://alfajores-forno.celo-testnet.org',
   CONTRACT_ADDRESS: '0xabE83DaDFcaBA9137Ce8E75a294b9F946A073565',
   START_BLOCK: 5658157,
-  
+
   // Knowledge graph space
   SPACE_ID: 'onchain-trust-network',
   AUTH_TOKEN: process.env.GRAPH_AUTH_TOKEN,
@@ -121,14 +121,14 @@ export class SpaceManager {
 
       // Get network effect analysis
       const networkData = await this.querier.getNetworkEffectAnalysis(userAddress);
-      
+
       console.log('\n📊 Network Analysis:');
       console.log(`  ⭐ Direct Ratings: ${networkData.directRatings?.length || 0}`);
       console.log(`  💰 Sponsorships: ${networkData.sponsorships?.length || 0}`);
       console.log(`  🎯 Hiring Outcomes: ${networkData.hiringOutcomes?.length || 0}`);
 
       if (networkData.directRatings && networkData.directRatings.length > 0) {
-        const avgRating = networkData.directRatings.reduce((sum: number, rating: any) => 
+        const avgRating = networkData.directRatings.reduce((sum: number, rating: any) =>
           sum + rating.properties.rating, 0
         ) / networkData.directRatings.length;
         console.log(`  📊 Average Rating: ${avgRating.toFixed(2)}/10`);
@@ -145,7 +145,7 @@ export class SpaceManager {
 
     try {
       const schema = await this.querier.getSchemaInfo();
-      
+
       console.log(`📖 Name: ${schema.name}`);
       console.log(`🔄 Version: ${schema.version}`);
       console.log(`📝 Description: ${schema.description}\n`);
@@ -200,7 +200,7 @@ export class SpaceManager {
       console.log('\n📊 Network Health:');
       const verifiedUsers = users.filter((user: any) => user.properties.verified).length;
       const reviewers = users.filter((user: any) => user.properties.isReviewer).length;
-      
+
       console.log(`  ✅ Verified Users: ${verifiedUsers}/${users.length} (${(verifiedUsers/users.length*100).toFixed(1)}%)`);
       console.log(`  👨‍💼 Reviewers: ${reviewers}/${users.length} (${(reviewers/users.length*100).toFixed(1)}%)`);
 

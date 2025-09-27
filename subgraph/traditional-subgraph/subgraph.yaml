@@ -1,6 +1,6 @@
-specVersion: 0.0.5
+specVersion: 0.0.4
 schema:
-  file: schema.graphql
+  file: ./schema.graphql
 dataSources:
   - kind: ethereum
     name: OnchainTrustNetwork
@@ -13,24 +13,24 @@ dataSources:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
-      file: OnchainTrustNetwork\OnchainTrustNetwork.wasm
       entities:
         - User
         - Reviewer
         - Rating
-        - Sponsorship
-        - HiringOutcome
         - Skill
         - Job
+        - Sponsorship
+        - HiringOutcome
       abis:
         - name: OnchainTrustNetwork
-          file: OnchainTrustNetwork\abis\OnchainTrustNetwork.json
+          file: ../abis/OnchainTrustNetwork.json
       eventHandlers:
-        - event: ReviewerApproved(indexed address,uint256)
+        - event: ReviewerApproved(indexed address)
           handler: handleReviewerApproved
         - event: SkillRated(indexed address,indexed address,indexed bytes32,uint8)
           handler: handleSkillRated
         - event: CreditsSpent(indexed address,indexed address,indexed bytes32,uint256)
           handler: handleCreditsSpent
-        - event: HiringOutcome(indexed address,bool,uint256)
+        - event: HiringOutcome(indexed address,bool)
           handler: handleHiringOutcome
+      file: ./src/mapping.ts
