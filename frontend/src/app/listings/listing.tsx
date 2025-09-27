@@ -123,8 +123,8 @@ const RatingModal: React.FC<RatingModalProps> = ({ profile, isOpen, onClose }) =
                   key={skill}
                   onClick={() => toggleSkill(skill)}
                   className={`px-3 py-1.5 text-sm rounded-full border transition-colors ${selectedSkills.includes(skill)
-                      ? 'bg-blue-600 border-blue-600 text-white'
-                      : 'border-gray-600 text-gray-300 hover:border-gray-500'
+                    ? 'bg-blue-600 border-blue-600 text-white'
+                    : 'border-gray-600 text-gray-300 hover:border-gray-500'
                     }`}
                 >
                   {skill}
@@ -144,8 +144,8 @@ const RatingModal: React.FC<RatingModalProps> = ({ profile, isOpen, onClose }) =
                   onMouseLeave={() => setHoverRating(0)}
                   onClick={() => setRating(num)}
                   className={`w-8 h-8 rounded-full text-sm font-medium transition-colors ${num <= (hoverRating || rating)
-                      ? 'bg-yellow-500 text-black'
-                      : 'bg-gray-700 text-gray-400 hover:bg-gray-600'
+                    ? 'bg-yellow-500 text-black'
+                    : 'bg-gray-700 text-gray-400 hover:bg-gray-600'
                     }`}
                 >
                   {num}
@@ -252,7 +252,7 @@ export default function Listings() {
   return (
     <div className="w-full space-y-6">
       {/* Header */}
-      <div className="text-center">
+      <div className="text-left">
         <h1 className="text-2xl font-bold mb-2">Professionals</h1>
         <p className="text-gray-400 text-sm">Rate and review talented professionals</p>
       </div>
