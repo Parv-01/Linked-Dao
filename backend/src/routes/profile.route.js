@@ -3,10 +3,10 @@ const router = express.Router();
 const profileService = require('../services/profile.service');
 
 const authenticateWeb3 = (req, res, next) => {
-    // req.user = { wallet_address: req.headers['x-wallet-address'] || '0xTestReviewerWalletAddress' };
-    // if (!req.user.wallet_address) {
-    //     return res.status(401).send({ message: "Wallet authentication required." });
-    // }
+    req.user = { wallet_address: req.headers['x-wallet-address'] || '0xTestReviewerWalletAddress' };
+    if (!req.user.wallet_address) {
+        return res.status(401).send({ message: "Wallet authentication required." });
+    }
     next();
 };
 

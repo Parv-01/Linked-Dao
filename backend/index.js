@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const { AppDataSource } = require('./src/config/database');
 const profileRoutes = require('./src/routes/profile.route');
 const jobPostingRoutes = require("./src/routes/job-posting.route");
+const jobApplicationRoutes = require("./src/routes/job-application.route");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -13,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/profiles', profileRoutes);
 app.use('/job-postings', jobPostingRoutes);
+app.use('/job-applications', jobApplicationRoutes);
 
 async function startServer() {
     try {

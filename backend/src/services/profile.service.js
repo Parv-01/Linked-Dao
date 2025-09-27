@@ -1,6 +1,7 @@
 const { AppDataSource } = require("../config/database");
 const { TABLE_USER_PROFILES } = require("../models/profile.model");
 
+// CREATE TABLE user_profiles (id INT PRIMARY KEY AUTO_INCREMENT NOT NULL, wallet_address varchar(100) NOT NULL, name varchar(244), bio varchar(244), is_seeking_review BOOLEAN)
 
 async function findOrCreateProfile(walletAddress) {
     const findQuery = `
@@ -19,8 +20,8 @@ async function findOrCreateProfile(walletAddress) {
         `;
         await AppDataSource.query(insertQuery, [
             walletAddress,
-            'Anonymous User',
-            'New Onchain User',
+            '',
+            '',
             false
         ]);
 
