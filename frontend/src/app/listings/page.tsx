@@ -1,4 +1,4 @@
-import Listings from './listing'; // Import the new component
+import Listings from './listing';
 
 export default function ListingsPage() {
   return (

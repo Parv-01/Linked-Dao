@@ -2,8 +2,6 @@
 
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import React, { useState } from 'react';
-
-// Mock profile data
 const mockProfiles = [
   {
     id: 1,
@@ -42,8 +40,6 @@ const mockProfiles = [
     reviews: 25
   },
 ];
-
-// All available skills for the rating modal
 const allSkills = [
   "React", "TypeScript", "JavaScript", "UI/UX Design", "Figma",
   "Solidity", "Smart Contracts", "Web3", "Ethereum", "DeFi",
@@ -58,7 +54,6 @@ interface RatingModalProps {
   onClose: () => void;
 }
 
-// Rating Modal Component
 const RatingModal: React.FC<RatingModalProps> = ({ profile, isOpen, onClose }) => {
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
   const [rating, setRating] = useState(0);
@@ -75,7 +70,6 @@ const RatingModal: React.FC<RatingModalProps> = ({ profile, isOpen, onClose }) =
   };
 
   const submitRating = () => {
-    // Handle rating submission here
     console.log("Rating submitted:", {
       profileId: profile.id,
       selectedSkills,
@@ -89,7 +83,7 @@ const RatingModal: React.FC<RatingModalProps> = ({ profile, isOpen, onClose }) =
   return (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-gray-900 rounded-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
-        {/* Header */}
+        
         <div className="flex items-center justify-between p-4 border-b border-gray-700">
           <h2 className="text-lg font-semibold">Rate {profile.name}</h2>
           <button
@@ -101,7 +95,7 @@ const RatingModal: React.FC<RatingModalProps> = ({ profile, isOpen, onClose }) =
         </div>
 
         <div className="p-4 space-y-6">
-          {/* Profile Preview */}
+          
           <div className="flex items-center space-x-3">
             <img
               src={profile.avatar}
@@ -114,7 +108,6 @@ const RatingModal: React.FC<RatingModalProps> = ({ profile, isOpen, onClose }) =
             </div>
           </div>
 
-          {/* Skills Selection */}
           <div>
             <h3 className="text-sm font-medium mb-3">Select skills to rate:</h3>
             <div className="flex flex-wrap gap-2">
@@ -133,7 +126,6 @@ const RatingModal: React.FC<RatingModalProps> = ({ profile, isOpen, onClose }) =
             </div>
           </div>
 
-          {/* Rating Scale */}
           <div>
             <h3 className="text-sm font-medium mb-3">Overall Rating (0-10):</h3>
             <div className="flex items-center space-x-2">
@@ -157,7 +149,6 @@ const RatingModal: React.FC<RatingModalProps> = ({ profile, isOpen, onClose }) =
             </p>
           </div>
 
-          {/* Submit Button */}
           <button
             onClick={submitRating}
             disabled={selectedSkills.length === 0 || rating === 0}
@@ -171,13 +162,12 @@ const RatingModal: React.FC<RatingModalProps> = ({ profile, isOpen, onClose }) =
   );
 };
 
-// Profile Card Component
 const ProfileCard: React.FC<{
   profile: typeof mockProfiles[0];
   onRate: (profile: typeof mockProfiles[0]) => void;
 }> = ({ profile, onRate }) => (
   <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-2xl p-4 space-y-4 hover:border-gray-600 transition-all duration-300">
-    {/* Profile Header */}
+    
     <div className="flex items-start space-x-3">
       <img
         src={profile.avatar}
@@ -196,7 +186,6 @@ const ProfileCard: React.FC<{
       </div>
     </div>
 
-    {/* Skills */}
     <div>
       <h4 className="text-sm font-medium text-gray-300 mb-2">Skills</h4>
       <div className="flex flex-wrap gap-1.5">
@@ -216,7 +205,6 @@ const ProfileCard: React.FC<{
       </div>
     </div>
 
-    {/* Bio */}
     <div>
       <h4 className="text-sm font-medium text-gray-300 mb-2">Bio</h4>
       <p className="text-sm text-gray-400 leading-relaxed line-clamp-3">
@@ -224,7 +212,6 @@ const ProfileCard: React.FC<{
       </p>
     </div>
 
-    {/* Rate Button */}
     <button
       onClick={() => onRate(profile)}
       className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium hover:from-blue-500 hover:to-purple-500 transition-all duration-300 shadow-lg"
@@ -234,7 +221,6 @@ const ProfileCard: React.FC<{
   </div>
 );
 
-// Main Listings Component
 export default function Listings() {
   const [selectedProfile, setSelectedProfile] = useState<typeof mockProfiles[0] | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -251,13 +237,12 @@ export default function Listings() {
 
   return (
     <div className="w-full space-y-6">
-      {/* Header */}
+     
       <div className="text-left">
         <h1 className="text-2xl font-bold mb-2">Professionals</h1>
         <p className="text-gray-400 text-sm">Rate and review talented professionals</p>
       </div>
 
-      {/* Profile Cards */}
       <div className="space-y-4">
         {mockProfiles.map(profile => (
           <ProfileCard
@@ -268,7 +253,6 @@ export default function Listings() {
         ))}
       </div>
 
-      {/* Rating Modal */}
       {selectedProfile && (
         <RatingModal
           profile={selectedProfile}

@@ -6,8 +6,8 @@ import { Providers } from "./wallet/providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "My Awesome App",
-  description: "A cool app built with Next.js",
+  title: "Linked-Dao",
+  description: "A decentralized developer community platform which gives the freedom to developers to showcase their skills and get rewarded for their contributions.",
 };
 
 export default function RootLayout({
@@ -16,11 +16,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <body className={`${inter.className} bg-gray-900 text-white`}>
-        {/* Background Image Container */}
         <div className="fixed inset-0 z-[-1] bg-[url('/logowname.svg')] bg-cover bg-center" />
-        {/* Overlay */}
         <div className="fixed inset-0 z-[-1] bg-black/60" />
 
         <Providers>

@@ -78,7 +78,6 @@ export default function BottomNavigation() {
           );
         })}
       </div>
-      {/* Safe area for iOS devices */}
       <div className="h-safe-area-inset-bottom bg-black/80" />
     </div>
   );

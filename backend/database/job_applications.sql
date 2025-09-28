@@ -1,5 +1,3 @@
--- Job Applications Table Schema
--- Run this SQL to create the job_applications table in your database
 
 CREATE TABLE IF NOT EXISTS job_applications (
     application_id VARCHAR(244) PRIMARY KEY NOT NULL,

@@ -1,7 +1,5 @@
-"use client"; // This page needs to be a client component for wallet interaction
-
-import Wallet from './wallet/wallet'; // Import the new Wallet component
-
+"use client"; 
+import Wallet from './wallet/wallet';
 export default function Home() {
   return (
     <section className="w-full max-w-md mx-auto flex flex-col items-center justify-start pt-12 px-4 text-center">

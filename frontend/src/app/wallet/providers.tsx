@@ -8,7 +8,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const config = getDefaultConfig({
   appName: "My App",
-  projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || "test-id",
+  projectId: "768f71172686aa1e8a1467c1592398b1",
   chains: [
     {
       id: 1,
@@ -24,8 +24,6 @@ const config = getDefaultConfig({
     },
   ],
 });
-
-// 2. Query client
 const queryClient = new QueryClient();
 
 export function Providers({ children }: { children: React.ReactNode }) {

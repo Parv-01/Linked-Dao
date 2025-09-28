@@ -3,7 +3,6 @@
 import { BuildingOfficeIcon, ClockIcon, CurrencyDollarIcon, MapPinIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import React, { useState } from 'react';
 
-// Mock job postings data
 const mockJobs = [
     {
         id: 1,
@@ -249,7 +248,7 @@ const JobModal: React.FC<JobModalProps> = ({ job, isOpen, onClose }) => {
                 </div>
 
                 <div className="p-4 pb-12 space-y-6">
-                    {/* Job Header */}
+                   
                     <div className="space-y-4">
                         <div>
                             <h2 className="text-2xl font-bold text-white mb-2">{job.title}</h2>
@@ -259,7 +258,6 @@ const JobModal: React.FC<JobModalProps> = ({ job, isOpen, onClose }) => {
                             </div>
                         </div>
 
-                        {/* Job Info */}
                         <div className="grid grid-cols-2 gap-4">
                             <div className="flex items-center space-x-2 text-sm text-gray-300">
                                 <MapPinIcon className="h-4 w-4 text-gray-400" />
@@ -275,7 +273,6 @@ const JobModal: React.FC<JobModalProps> = ({ job, isOpen, onClose }) => {
                             </div>
                         </div>
 
-                        {/* Skills */}
                         <div>
                             <h4 className="text-sm font-medium text-gray-300 mb-2">Required Skills</h4>
                             <div className="flex flex-wrap gap-2">
@@ -291,7 +288,6 @@ const JobModal: React.FC<JobModalProps> = ({ job, isOpen, onClose }) => {
                         </div>
                     </div>
 
-                    {/* Full Description */}
                     <div className="bg-gray-800/50 rounded-xl p-4">
                         <h3 className="text-lg font-semibold mb-3">Job Description</h3>
                         <div className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">
@@ -299,7 +295,6 @@ const JobModal: React.FC<JobModalProps> = ({ job, isOpen, onClose }) => {
                         </div>
                     </div>
 
-                    {/* Application Stats */}
                     <div className="bg-gray-800/50 rounded-xl p-4">
                         <div className="flex items-center justify-between text-sm">
                             <span className="text-gray-400">Posted {job.postedDate}</span>
@@ -322,7 +317,6 @@ const JobModal: React.FC<JobModalProps> = ({ job, isOpen, onClose }) => {
     );
 };
 
-// Job Card Component
 const JobCard: React.FC<{
     job: typeof mockJobs[0];
     onClick: (job: typeof mockJobs[0]) => void;
@@ -331,7 +325,6 @@ const JobCard: React.FC<{
         onClick={() => onClick(job)}
         className="bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-2xl p-4 space-y-4 hover:border-gray-600 hover:bg-gray-800/90 transition-all duration-300 cursor-pointer"
     >
-        {/* Job Header */}
         <div>
             <h3 className="font-semibold text-lg text-white mb-1">{job.title}</h3>
             <div className="flex items-center space-x-2 text-gray-400 text-sm">
@@ -339,8 +332,6 @@ const JobCard: React.FC<{
                 <span>{job.company}</span>
             </div>
         </div>
-
-        {/* Job Info */}
         <div className="space-y-2">
             <div className="flex items-center justify-between text-sm">
                 <div className="flex items-center space-x-2 text-gray-300">
@@ -357,13 +348,10 @@ const JobCard: React.FC<{
                 <span>{job.salary}</span>
             </div>
         </div>
-
-        {/* Description */}
         <p className="text-sm text-gray-400 leading-relaxed line-clamp-3">
             {job.description}
         </p>
 
-        {/* Skills */}
         <div className="flex flex-wrap gap-1.5">
             {job.skills.slice(0, 3).map(skill => (
                 <span
@@ -379,8 +367,6 @@ const JobCard: React.FC<{
                 </span>
             )}
         </div>
-
-        {/* Footer */}
         <div className="flex items-center justify-between text-xs text-gray-500 pt-2 border-t border-gray-700">
             <span>Posted {job.postedDate}</span>
             <span>{job.applicants} applicants</span>
@@ -388,7 +374,6 @@ const JobCard: React.FC<{
     </div>
 );
 
-// Main Jobs Page Component
 export default function JobsPage() {
     const [selectedJob, setSelectedJob] = useState<typeof mockJobs[0] | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
