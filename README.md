@@ -3,6 +3,13 @@
 Built at **ETHGlobal** ✨
 
 ---
+## 🔗 Demo Link : - 
+
+## 🔗 Notion Doc Link : - https://www.notion.so/Linked-Dao-27a3ffb636f080e39285f42ae5369f35?source=copy_link
+
+## 🎨 Figma Wireframe : - https://www.figma.com/design/sNxzg0xQhDzMWmrLM8iZvI/Wireframe-ETH?node-id=0-1&t=S7ACeVllgvDFP7K1-0
+
+## 🎨 Figma Flowchart : - https://www.figma.com/design/5fd24Of41mWKcQkOOkeNVQ/ETH-GLOBAL-Flow-Chart?node-id=0-1&t=YNw5WgQfSE8W8Q1D-1 
 
 ## 🌍 Problem Statement  
 
