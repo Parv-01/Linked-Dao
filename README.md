@@ -151,9 +151,12 @@ This project was built as part of ETHGlobal Hackathon to solve real-world proble
 
 🤝 Contributors
 
-Parv
+@itsYashASeeker
+@krishnavbajoria02
+@Rohan5050
+@Parv-01
+@khushikumari239
 
-Khushi
 
 📜 License
 
